@@ -15,3 +15,12 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 @
+
+Kod
+Sorunlar
+Çekme istekleri
+Vikiler
+Ayarlar
+Web kancaları ve hizmetler
+Dağıtım anahtarları
+İşbirliği davetleri
