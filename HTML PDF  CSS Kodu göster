@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Assorted web dev notes</title>
+
+<style>
+
+:root {
+  --bg: white;
+  --text: oklch(25% 0 0);
+  --soft: oklch(42% 0 0);
+  --bg-pre: rgb(230 230 230 / 0.15);
+  --outline: rgb(30 30 30 / 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: oklch(31.14% 0.021 285.75);
+    --text: oklch(90% 0.008 286.75);
+    --soft: oklch(78.61% 0.021 285.75);
+    --bg-pre: rgb(30 30 30 / 0.3);
+    --outline: rgb(230 230 230 / 0.07);
+  }
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+
+  margin: 4em;
+  max-width: 40rem;
+}
+
+@media (width < 34em) {
+  body {
+    margin: 1em;
+  }
+}
+
+body {
+  margin-block-end: 20svh;
+}
+
+p {
+  margin-block: 2.25em;
+}
+
+ol#toc {
+  margin-block: 2.25em 5.5em;
+
+  li {
+    margin-block: 0.5em;
+  }
+}
+
+ol:not(#toc) li {
+  margin-block: 2.25em;
+}
+
+h3, h4 {
+  margin-block: 4rem 2.25rem;
+  scroll-margin-block-start: 4rem;
+}
+
+ol {
+  padding-inline-start: 1rem;
+}
+
+ol li {
+  padding-inline-start: 1ch;
+}
+
+blockquote {
+  color: var(--soft);
+  font-style: italic;
+}
+
+pre {
+  padding: 2ch;
+  background-color: var(--bg-pre);
+  overflow-y: auto;
+}
+
+:not(pre) > code {
+  border: 1px solid var(--outline);
+  padding: 1ch;
+}
+
+hr {
+  margin-block: 5rem;
+  border: 0;
+  border-block-end: 1px solid var(--outline);
+}
+
+a {
+  color: rebeccapurple;
+  text-underline-offset: 0.3em;
+}
+
+@media (prefers-color-scheme: dark) {
+  a {
+    color: lightsteelblue;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Assorted web dev notes</h2>
+
+<ol id="toc">
+<li><a href="#npx-vite">Vite as SimpleHTTPServer</a></li>
+<li><a href="#react-render">When does React render a component?</a></li>
+<li><a href="#npm-check-updates">Updating package.json</a></li>
+<li><a href="#diffs">Colorful diffs of arbitrary files</a></li>
+</ol>
+
+<h3 id="npx-vite">
+Replacement of Python's SimpleHTTPServer
+</h3>
+
+Vite can be used as a quick (and better!) replacement for
+<code>python -m http.server 5173</code>.
+
+<pre><code>npx vite
+</code></pre>
+
+in any folder, and get a http server that serves the HTML in that directory with
+live reloads on changes.
+
+
+<h4 id="vite-debug">
+Vite DEBUG
+</h4>
+
+Use <code>DEBUG=vite:* vite</code> to get Vite to talk more.
+
+<hr>
+
+<h3 id="react-render">
+When does React render a component?
+</h3>
+
+<ol>
+
+<li>
+React will render a component iff its state changes.
+<blockquote>Context is state.</blockquote>
+</li>
+
+<li>
+When React renders a component, it will also render all its children.
+<blockquote>To opt a child out of this, memo it, or pass it as a prop.</blockquote>
+</li>
+
+</ol>
+
+<hr>
+
+<h3 id="npm-check-updates">
+Updating package.json
+</h3>
+
+<pre><code>npx npm-check-updates --interactive
+</code></pre>
+
+<p>updates <code>package.json</code>, not just the lock files. To update just a specific package,</p>
+
+<pre><code>npx npm-check-updates --interactive <i>&lt;package-name></i>
+</code></pre>
+
+
+<hr>
+
+<h3 id="diffs">
+Colorful diffs of arbitrary files
+</h3>
+
+<pre><code>git diff --no-index b/oo f/ar
+</code></pre>
+
+</body>
+</html>
